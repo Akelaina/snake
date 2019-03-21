@@ -11,17 +11,25 @@ namespace snake
         static void Main(string[] args)
         {
 
-            Point p1 = new Point(1, 3, '*');
-            p1.Draw();
+            //// создаем границы консоли Akelaina
+            // Console.SetBufferSize(80, 20);
+            
+            // создаем границы консоли Arkasha
+            Console.SetBufferSize(120, 30);
 
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw();
+            // отрисовка рамочки
+            HorizontalLine Topline = new HorizontalLine(0, 78, 0, '+');
+            VerticalLine Leftline = new VerticalLine(0, 24, 0, '+');
+            HorizontalLine Downline = new HorizontalLine(0, 78, 24, '+');
+            VerticalLine Rightline = new VerticalLine(0, 24, 78, '+');
+            Topline.Drow();
+            Leftline.Drow();
+            Downline.Drow();
+            Rightline.Drow();
 
-            HorizontalLine Hline = new HorizontalLine(1, 40, 1, '#');
-            Hline.Drow();
-
-            VerticalLine Vline = new VerticalLine(1, 20, 1, '#');
-            Vline.Drow();
+            //отрисовка точек
+            Point p = new Point(7, 7, '*');
+            p.Draw();
 
 
             Console.ReadKey();
