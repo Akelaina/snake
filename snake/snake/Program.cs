@@ -12,48 +12,50 @@ namespace snake
         static void Main(string[] args)
         {
 
-            //// создаем границы консоли Akelaina
-            // Console.SetBufferSize(80, 20);
-            
             // создаем границы консоли Arkasha
-            Console.SetBufferSize(120, 30);
+            Console.SetBufferSize(80, 25);
 
             // отрисовка рамочки
             HorizontalLine Topline = new HorizontalLine(0, 78, 0, '+');
             VerticalLine Leftline = new VerticalLine(0, 24, 0, '+');
             HorizontalLine Downline = new HorizontalLine(0, 78, 24, '+');
             VerticalLine Rightline = new VerticalLine(0, 24, 78, '+');
-            Topline.Drow();
-            Leftline.Drow();
-            Downline.Drow();
-            Rightline.Drow();
+            Topline.Draw();
+            Leftline.Draw();
+            Downline.Draw();
+            Rightline.Draw();
 
             //отрисовка точек
-            Point p = new Point(7, 7, '*');
-            Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Drow();
+            Point p = new Point(10, 10, '*');
+            Snake snake = new Snake(p, 3, Direction.RIGHT);
+            snake.Draw();
+
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
 
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+
+                Thread.Sleep(100);
 
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
-                }
-                Thread.Sleep(100);
-                snake.Move();
-                
+                } 
             }
-            
-
-
-
-
-            
+   
         }
-
-
 
     }
 
