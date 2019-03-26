@@ -18,7 +18,7 @@ namespace snake
             Walls walls = new Walls(80, 25);
             walls.Draw();
 
-           
+
             //отрисовка точек
             Point p = new Point(10, 10, '*');
             Snake snake = new Snake(p, 3, Direction.RIGHT);
@@ -30,7 +30,7 @@ namespace snake
 
             while (true)
             {
-                if ( walls.IsHit(snake) || snake.IsHitTail() )
+                if (walls.IsHit(snake) || snake.IsHitTail())
                 {
                     break;
                 }
@@ -50,11 +50,32 @@ namespace snake
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
-                } 
+                }
             }
-   
+            WriteGameOver();
+            Console.ReadLine();
         }
+        static void WriteGameOver()
+        {
+            int xOffset = 25;
+            int yOffset = 8;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.SetCursorPosition(xOffset, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+            WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+            yOffset++;
+            WriteText("Авторы: Аркадий и Евгения", xOffset + 2, yOffset++);
+            WriteText("Брюховецкие", xOffset + 9, yOffset++);
+            WriteText("Специально для LOVE", xOffset + 5, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
 
+
+        }
+        static void WriteText(String text, int xOffset, int yOffset)
+        {
+            Console.SetCursorPosition(xOffset, yOffset);
+            Console.WriteLine(text);
+
+        }
     }
-
 }
