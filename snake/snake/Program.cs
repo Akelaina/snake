@@ -15,16 +15,10 @@ namespace snake
             // создаем границы консоли Arkasha
             Console.SetBufferSize(80, 25);
 
-            // отрисовка рамочки
-            HorizontalLine Topline = new HorizontalLine(0, 78, 0, '+');
-            VerticalLine Leftline = new VerticalLine(0, 24, 0, '+');
-            HorizontalLine Downline = new HorizontalLine(0, 78, 24, '+');
-            VerticalLine Rightline = new VerticalLine(0, 24, 78, '+');
-            Topline.Draw();
-            Leftline.Draw();
-            Downline.Draw();
-            Rightline.Draw();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
+           
             //отрисовка точек
             Point p = new Point(10, 10, '*');
             Snake snake = new Snake(p, 3, Direction.RIGHT);
@@ -36,6 +30,10 @@ namespace snake
 
             while (true)
             {
+                if ( walls.IsHit(snake) || snake.IsHitTail() )
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
