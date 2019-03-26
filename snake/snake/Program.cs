@@ -57,17 +57,18 @@ namespace snake
         }
         static void WriteGameOver()
         {
-            int xOffset = 25;
-            int yOffset = 8;
+            int xOffset = 21;
+            int yOffset = 7;
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.SetCursorPosition(xOffset, yOffset++);
-            WriteText("============================", xOffset, yOffset++);
-            WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
+            WriteText("====================================", xOffset, yOffset++);
+            WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 5, yOffset++);
             yOffset++;
-            WriteText("Авторы: Аркадий и Евгения", xOffset + 2, yOffset++);
-            WriteText("Брюховецкие", xOffset + 9, yOffset++);
-            WriteText("Специально для LOVE", xOffset + 5, yOffset++);
-            WriteText("============================", xOffset, yOffset++);
+            WriteText("Авторы: Аркадий и Евгения", xOffset + 6, yOffset++);
+            WriteText("Брюховецкие", xOffset + 13, yOffset++);
+            yOffset++;
+            WriteText("Я люблю тебя как змейка любит кушать", xOffset, yOffset++);
+            WriteText("====================================", xOffset, yOffset++);
 
 
         }
